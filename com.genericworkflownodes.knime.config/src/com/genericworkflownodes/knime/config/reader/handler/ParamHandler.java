@@ -2,7 +2,7 @@
  * Copyright (c) 2012, Stephan Aiche.
  *
  * This file is part of GenericKnimeNodes.
- * 
+ *
  * GenericKnimeNodes is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -57,7 +57,7 @@ import com.genericworkflownodes.util.ranges.IntegerRangeExtractor;
 
 /**
  * SAXHandler for the parameters tag in the CTD document.
- * 
+ *
  * @author aiche
  */
 public class ParamHandler extends DefaultHandler {
@@ -183,7 +183,7 @@ public class ParamHandler extends DefaultHandler {
 
     /**
      * C'tor accepting the parent handler and the xml reader.
-     * 
+     *
      * @param xmlReader
      *            The xml reader of the global document.
      * @param parentHandler
@@ -293,7 +293,7 @@ public class ParamHandler extends DefaultHandler {
     /**
      * Extracts common parameters like isAdvanced, isOptional, and description
      * from the Attributes and passes them to the current parameter.
-     * 
+     *
      * @param attributes
      *            The Attributes containing the necessary values.
      */
@@ -309,7 +309,7 @@ public class ParamHandler extends DefaultHandler {
 
     /**
      * Convert the current element into a {@link StringListParameter}.
-     * 
+     *
      * @param paramName
      *            The name of the Parameter
      * @param attributes
@@ -332,7 +332,7 @@ public class ParamHandler extends DefaultHandler {
     /**
      * Convert the current element into a Port and the respective
      * IFileParameter.
-     * 
+     *
      * @param paramName
      *            The name of the Parameter.
      * @param attributes
@@ -394,7 +394,7 @@ public class ParamHandler extends DefaultHandler {
 
     /**
      * Extract the list of supported FileExtensions from the given attributes.
-     * 
+     *
      * @param attributes
      *            The attributes containing the FileExtension information.
      * @return A list of supported FileExtensions.
@@ -426,7 +426,7 @@ public class ParamHandler extends DefaultHandler {
 
     /**
      * Convert the current element into a DoubleListParameter.
-     * 
+     *
      * @param paramName
      *            The name of the Parameter
      * @param attributes
@@ -450,7 +450,7 @@ public class ParamHandler extends DefaultHandler {
 
     /**
      * Convert the current element into a IntegerListParameter.
-     * 
+     *
      * @param paramName
      *            The name of the Parameter
      * @param attributes
@@ -474,7 +474,7 @@ public class ParamHandler extends DefaultHandler {
 
     /**
      * Convert the current element into a StringParameter.
-     * 
+     *
      * @param paramName
      *            The name of the Parameter
      * @param paramValue
@@ -486,6 +486,7 @@ public class ParamHandler extends DefaultHandler {
             Attributes attributes) {
         if (isPort(attributes)) {
             createPort(paramName, attributes, false);
+           ((StringParameter) m_currentParameter).setValue(paramValue);
         } else {
             // check if we have a boolean
             String restrictions = attributes.getValue(ATTR_RESTRICTIONS);
@@ -507,7 +508,7 @@ public class ParamHandler extends DefaultHandler {
 
     /**
      * Returns true if the Parameter is a BoolParameter.
-     * 
+     *
      * @param restrictions
      *            The restrictions encoding the bool restrictions.
      * @return True if the parameter is a BoolParameter, false otherwise.
@@ -529,7 +530,7 @@ public class ParamHandler extends DefaultHandler {
 
     /**
      * Returns true if the given parameter is an input or output port.
-     * 
+     *
      * @param attributes
      *            The attributes of the parameter to check.
      * @return True if the parameter is a port, false otherwise.
@@ -551,7 +552,7 @@ public class ParamHandler extends DefaultHandler {
 
     /**
      * Convert the current element into a IntegerParameter.
-     * 
+     *
      * @param paramName
      *            The name of the Parameter
      * @param paramValue
@@ -577,7 +578,7 @@ public class ParamHandler extends DefaultHandler {
 
     /**
      * Convert the current element into a DoubleParameter.
-     * 
+     *
      * @param paramName
      *            The name of the Parameter
      * @param paramValue
@@ -605,7 +606,7 @@ public class ParamHandler extends DefaultHandler {
      * Returns true if the given attributes contain either the attribute
      * "required" with the value false or not the deprecated "required" or
      * "mandatory" tags.
-     * 
+     *
      * @param attributes
      *            The attributes to check.
      * @return True if the element associated to the given attributes is an an
@@ -628,7 +629,7 @@ public class ParamHandler extends DefaultHandler {
     /**
      * Returns true if the given attributes contain either the attribute
      * "advanced" set to true or the deprecated "advanced" tag.
-     * 
+     *
      * @param attributes
      *            The attributes to check.
      * @return True if the element associated to the given attributes is an
@@ -650,7 +651,7 @@ public class ParamHandler extends DefaultHandler {
 
     /**
      * Creates a list of all tags that were given in the attributes.
-     * 
+     *
      * @param attributes
      *            The attributes to check for the tags attribute.
      * @return A Set of all tags. The Set is empty if no tags were given or the
